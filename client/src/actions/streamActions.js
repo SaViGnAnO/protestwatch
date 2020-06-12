@@ -1,5 +1,8 @@
 import { GET_STREAMS, ADD_STREAM, DELETE_STREAM, STREAMS_LOADING } from './types';
 import axios from 'axios';
+const config = require('./config');
+
+this.axios.defaults.baseURL = config.BASE_URL || "http://localhost:5000";
 
 export const getStreams = () => dispatch => {
     dispatch(setStreamsLoading());
