@@ -1,4 +1,3 @@
-import { v4 as uuid } from 'uuid';
 import { GET_STREAMS, ADD_STREAM, DELETE_STREAM, STREAMS_LOADING } from '../actions/types';
 
 const initialState = {
