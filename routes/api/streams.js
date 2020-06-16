@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Stream = require('../../models/Stream');
+const auth = require('../../middleware/auth');
 
 // @route   GET api/streams
 // @desc    Get all streams
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
 // @route   POST api/streams
 // @desc    Add a new stream
 // @access  Private
-router.post('/', (req, res) => {
+router.post('/', auth, (req, res) => {
     const newStream = new Stream({
         name: req.body.name,
         url: req.body.url,
@@ -27,7 +28,7 @@ router.post('/', (req, res) => {
 // @route   DELETE api/streams
 // @desc    Delete a stream by ID
 // @access  Private
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth, (req, res) => {
     Stream.findById(req.params.id)
         .then(stream => stream.remove().then(() => res.json({ success: true})))
         .catch(err => res.status(404).json({error: `Could not find stream with id: ${req.params.id}`}));

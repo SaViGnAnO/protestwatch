@@ -3,5 +3,7 @@ dotenv.config();
 
 module.exports = {
     mongoURI: process.env.MONGO_URI,
-    port: process.env.PORT
+    youtubeKey: process.env.YOUTUBE_APIKEY,
+    port: process.env.PORT,
+    jwtSecret: process.env.JWT_SECRET
 };
